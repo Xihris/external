@@ -1,0 +1,27 @@
+<%- model_class = External -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @external.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:passport) %>:</strong></dt>
+  <dd><%= @external.passport %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:biarthday) %>:</strong></dt>
+  <dd><%= @external.biarthday %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:organisation) %>:</strong></dt>
+  <dd><%= @external.organisation %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:org_success) %>:</strong></dt>
+  <dd><%= @external.org_success %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              externals_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_external_path(@external), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              external_path(@external),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

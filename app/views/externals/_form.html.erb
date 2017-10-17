@@ -1,0 +1,62 @@
+<%= form_for @ext, :html => { :class => "form-horizontal external" } do |f| %>
+
+  <% if @ext.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@ext.errors.count, "error") %> prohibited this external from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @ext.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :passport, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :passport, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:passport) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :biarthday, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :biarthday, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:biarthday) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :organisation, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :organisation, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:organisation) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :org_success, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :org_success, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:org_success) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                root_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,42 @@
+<%- model_class = External -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:passport) %></th>
+      <th><%= model_class.human_attribute_name(:biarthday) %></th>
+      <th><%= model_class.human_attribute_name(:organisation) %></th>
+      <th><%= model_class.human_attribute_name(:org_success) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @externals.each do |external| %>
+      <tr>
+        <td><%= external.name %></td>
+        <td><%= external.passport %></td>
+        <td><%= external.biarthday %></td>
+        <td><%= external.organisation %></td>
+        <td><%= external.org_success %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      root_path(external), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_external_path(external), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      root_path(external),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_external_path,
+            :class => 'btn btn-primary' %>
